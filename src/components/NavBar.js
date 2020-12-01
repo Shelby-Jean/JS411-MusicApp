@@ -6,7 +6,7 @@ const NavBar = () => {
     <div>
       <AppBar position="sticky">
           <Toolbar>
-            <Typography>
+            <Typography component="h1">
                 My Music App
             </Typography>
           </Toolbar>
