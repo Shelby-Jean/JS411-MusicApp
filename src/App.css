@@ -9,8 +9,6 @@
   flex-direction: column;
 }
 
-.button {
-  color: white;
-  background-color: #3F51B5;
-  margin-top: 10px;
+.cards-container {
+  display: flex;
 }

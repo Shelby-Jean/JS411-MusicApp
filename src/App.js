@@ -20,11 +20,11 @@ class App extends React.Component {
     return (
       <div>
         <NavBar />
-        
+
         {this.state.loggedIn ? <Dashboard /> : (
          <div className="form-container">
           <form className="login-form">
-            <TextField id="standard-basic" label="Username" required />
+            <TextField id="standard-basic" label="Username" required={true} isRequired="true" />
             <TextField id="standard-basic" label="Password" type="password" required />
             <br/>
             <Button variant="contained" color="primary" onClick={this.login}>LOGIN</Button>
