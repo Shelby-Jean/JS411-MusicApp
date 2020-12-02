@@ -9,6 +9,14 @@
   flex-direction: column;
 }
 
+/* .dashboard-container {
+
+} */
+
+.welcome-header {
+  margin-top: 15px;
+}
+
 .cards-container {
   display: flex;
   justify-content: center;

@@ -3,7 +3,7 @@ import { Card, CardContent, CardActions, Typography, Switch, Slider, Select, Men
 
 class Dashboard extends React.Component {
   state = {
-    online: false,
+    online: true,
     volume: 20,
     quality: 2,
     notifications: [
@@ -31,12 +31,17 @@ class Dashboard extends React.Component {
     })
   }
 
+  // componentDidUpdate = (prevState) => {
+    
+  // }
+
 
   render() {
     return (
-      <div>
-        <div>
-          <Typography component="h2" variant="h5" color="textSecondary" fontWeight="fontWeightBold">Welcome User!</Typography>
+      <div className="dashboard-container">
+
+        <div className="welcome-header">
+          <Typography component="h2" variant="h5" color="textSecondary" display="inline">Welcome User!</Typography>
         </div>
 
         <div className="cards-container">
@@ -51,7 +56,7 @@ class Dashboard extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Switch onChange={this.handleOnline} value={this.state.online} name="online" />
+              <Switch checked={this.state.online} onChange={this.handleOnline} value={this.state.online} name="online" />
             </CardActions>
           </Card>
 
@@ -89,10 +94,28 @@ class Dashboard extends React.Component {
             </CardActions>
           </Card>
         </div>
-
+        
         <div>
-          <Typography component="h3" variant="h6">System Notifications:</Typography>
+          <Typography component="h3" variant="h6" display="inline">System Notifications:</Typography>
+          {this.state.online ? null :
+            <div>
+              <p style={{color: "red"}}>{this.state.notifications[0]}</p>
+            </div>
+          }
+          {this.state.volume > 80 ?
+            <div>
+              <p style={{color: "red"}}>{this.state.notifications[1]}</p>
+            </div>
+            : null
+          }
+          {this.state.quality === 1 ?
+            <div>
+              <p style={{color: "red"}}>{this.state.notifications[2]}</p>
+            </div>
+            : null
+          }
         </div>
+        
 
       </div>
     )
