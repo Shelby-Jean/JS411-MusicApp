@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
       <div className="dashboard-container">
 
         <div className="welcome-header">
-          <Typography component="h2" variant="h5" color="textSecondary" display="inline">Welcome User!</Typography>
+          <Typography component="h2" variant="h5" color="textSecondary">Welcome User!</Typography>
         </div>
 
         <div className="cards-container">
@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
             </CardActions>
           </Card>
 
-          <Card className="card" id="middle-card">
+          <Card className="card">
             <CardContent>
               <Typography component="h4" fontWeight="fontWeightBold">
               Master Volume
@@ -110,8 +110,8 @@ class Dashboard extends React.Component {
           </Card>
         </div>
         
-        <div>
-          <Typography component="h3" variant="h6" display="inline">System Notifications:</Typography>
+        <div className="notifications-container">
+          <Typography component="h3" variant="h6">System Notifications:</Typography>
           <div>
             {this.state.notifications.map((notification, index) => (
                 <p key={index}>

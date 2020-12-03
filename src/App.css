@@ -9,24 +9,32 @@
   flex-direction: column;
 }
 
-/* .dashboard-container {
-
-} */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    ". header ."
+    ". cards ."
+    ". notifications .";
+}
 
 .welcome-header {
   margin-top: 15px;
+  grid-area: header;
 }
 
 .cards-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin: 50px 0;
+  grid-area: cards;
 }
 
 .card {
-  width: 15%;
+  width: 30%;
 }
 
-#middle-card {
-  margin: 0 50px;
+.notifications-container {
+  grid-area: notifications;
 }
