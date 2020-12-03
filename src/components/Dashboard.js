@@ -2,38 +2,53 @@ import React from 'react';
 import { Card, CardContent, CardActions, Typography, Switch, Slider, Select, MenuItem } from '@material-ui/core';
 
 class Dashboard extends React.Component {
-  state = {
+  constructor(props){
+    super(props)
+    this.state = {
     online: true,
     volume: 20,
     quality: 2,
-    notifications: [
-      "Your application is offline. You won't be able to share or stream music to other devices.", 
-      "Listening to music at a high volume could cause long-term hearing loss.",
-      "Music quality is degraded. Increase quality if your connection allows it."
-    ]
+    notifications: []
+    }
   }
 
   handleOnline = () => {
     this.setState({
       online: !this.state.online
-    })
+    });
   }
 
   handleVolume = (event, value) => {
     this.setState({
       volume: value
-    })
+    });
   }
 
   handleQuality = (event) => {
     this.setState({
       quality: event.target.value
-    })
+    });
   }
 
-  // componentDidUpdate = (prevState) => {
-    
-  // }
+  componentDidUpdate = (prevProps, prevState) => {
+    let tempNotifications = [];
+    if(this.state.online === false){
+      tempNotifications.push("Your application is offline. You won't be able to share or stream music to other devices.");
+    } 
+    if(this.state.volume > 80){
+      tempNotifications.push("Listening to music at a high volume could cause long-term hearing loss.");
+    } 
+    if(this.state.quality === 1){
+      tempNotifications.push("Music quality is degraded. Increase quality if your connection allows it.");
+    } 
+    if(tempNotifications !== prevState.notifications){
+      console.log(tempNotifications, prevState.notifications);
+      console.log('component updated');
+      // this.setState({
+      //   notifications: tempNotifications
+      // });
+    }
+  }
 
 
   render() {
@@ -97,23 +112,13 @@ class Dashboard extends React.Component {
         
         <div>
           <Typography component="h3" variant="h6" display="inline">System Notifications:</Typography>
-          {this.state.online ? null :
-            <div>
-              <p style={{color: "red"}}>{this.state.notifications[0]}</p>
-            </div>
-          }
-          {this.state.volume > 80 ?
-            <div>
-              <p style={{color: "red"}}>{this.state.notifications[1]}</p>
-            </div>
-            : null
-          }
-          {this.state.quality === 1 ?
-            <div>
-              <p style={{color: "red"}}>{this.state.notifications[2]}</p>
-            </div>
-            : null
-          }
+          <div>
+            {this.state.notifications.map((notification, index) => (
+                <p key={index}>
+                  {notification}
+                </p>
+            ))}
+          </div>
         </div>
         
 
