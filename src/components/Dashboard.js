@@ -41,13 +41,13 @@ class Dashboard extends React.Component {
     if(this.state.quality === 1){
       tempNotifications.push("Music quality is degraded. Increase quality if your connection allows it.");
     } 
-    if(tempNotifications !== prevState.notifications){
-      console.log(tempNotifications, prevState.notifications);
-      console.log('component updated');
-      // this.setState({
-      //   notifications: tempNotifications
-      // });
+    if(prevState.notifications.length !== tempNotifications.length){
+      this.setState({
+        notifications: tempNotifications
+      });
     }
+    console.log('previous state: ', prevState.notifications);
+    console.log('current state: ', this.state.notifications);
   }
 
 
@@ -71,7 +71,11 @@ class Dashboard extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Switch checked={this.state.online} onChange={this.handleOnline} value={this.state.online} name="online" />
+              <Switch 
+                checked={this.state.online} 
+                onChange={this.handleOnline} 
+                value={this.state.online} 
+              />
             </CardActions>
           </Card>
 
@@ -86,7 +90,14 @@ class Dashboard extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Slider marks={true} step={10} min={0} max={100} onChange={this.handleVolume} value={this.state.volume} name="volume" />
+              <Slider 
+                marks={true} 
+                step={10} 
+                min={0} 
+                max={100} 
+                onChange={this.handleVolume} 
+                value={this.state.volume} 
+              />
             </CardActions>
           </Card>
 
@@ -101,7 +112,7 @@ class Dashboard extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Select value={this.state.quality} onChange ={this.handleQuality} name="quality">
+              <Select value={this.state.quality} onChange ={this.handleQuality}>
                 <MenuItem value={1}>Low</MenuItem>
                 <MenuItem value={2}>Normal</MenuItem>
                 <MenuItem value={3}>High</MenuItem>

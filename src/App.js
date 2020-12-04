@@ -34,8 +34,22 @@ class App extends React.Component {
         {this.state.loggedIn ? <Dashboard /> : (
          <div className="form-container">
           <form className="login-form" onSubmit={this.login}>
-            <TextField label="Username" type="text" value={this.state.username} onChange={this.inputChange} name="username" required />
-            <TextField label="Password" type="password" value={this.state.password} onChange={this.inputChange} name="password" required />
+            <TextField 
+              label="Username" 
+              type="text" 
+              value={this.state.username} 
+              onChange={this.inputChange} 
+              name="username" 
+              required 
+            />
+            <TextField 
+              label="Password" 
+              type="password" 
+              value={this.state.password} 
+              onChange={this.inputChange} 
+              name="password" 
+              required 
+            />
             <br/>
             <Button variant="contained" color="primary" type="submit">LOGIN</Button>
           </form>
